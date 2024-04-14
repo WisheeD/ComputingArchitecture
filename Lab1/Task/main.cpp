@@ -23,17 +23,11 @@ void Task(float a, float b, float h, float eps)
 {
     std::ofstream my_file("values.csv");
     float four = 4.0f; float one = 1.0f; float half = 0.5f; float part = 0.25f;
-    float res = 0.0f; float tempY = 0.0f; float tempS = 0.0f;
-    float S = 0.0f; float Y = 0.0f;
-    float k = 0.0f; float xk = 0.0f;
+    float res = 0.0f; float tempY = 0.0f;
 
-    float accumulated_time = 0.0f;
     float iteration_time = 0.0f;
 
-    std::cout << std::setprecision(3) << std::scientific << std::showpos << "eps = "
-    << eps << "\n";
-
-    std::cout << " |     x      |     S(x)   |     Y(x)   | abs(Y - S) |  n |"
+    std::cout << " |       x       |      S(x)     |      Y(x)     |   abs(Y - S)  |  n  |"
     << std::noshowpos << std::right << std::setw(2) << "\n";
 
     auto start_program=std::chrono::high_resolution_clock::now();
@@ -42,7 +36,7 @@ void Task(float a, float b, float h, float eps)
     {
         auto start_iteration=std::chrono::high_resolution_clock::now();
 
-        Y = 0.0f;
+        float Y = 0.0f;
 
         // (1 + x) / (1 - x)
         asm("fld %1;" "fld %2;" "fsub;" "fld %1;" "fld %2;" "fadd;" "fdiv;" "fstp %0;": "=m" (res): "m" (x), "m" (one));
@@ -56,15 +50,17 @@ void Task(float a, float b, float h, float eps)
         // 0.25 * ln((1 + x) / (1 - x)) + 0.5 * arctg(x)
         asm("fld %1;" "fld %2;" "fadd;" "fstp %0;": "=m" (Y): "m" (tempY), "m" (res));
 
-        S = 0.0f;
+        float S = 0.0f;
+        float k = 0.0f;
 
-        while(std::abs(Y - S) > eps)
+        while (true)
         {
             auto start_cycle=std::chrono::high_resolution_clock::now();
 
-            xk = 1.0f;
+            float xk = 1.0;
+            float tempS = 0;
 
-            for(int j = 0; j < 4 * k + 1; ++j)       // x ^ 4 * k + 1
+            for(int j = 0; j < 4 * (int)k + 1; ++j)       // x ^ 4 * k + 1
             {
                 asm("fld %0;" "fld %1;" "fmul;" "fstp %0;" : "+m" (xk) : "m" (x));
             }
@@ -72,34 +68,25 @@ void Task(float a, float b, float h, float eps)
             // 4 * k + 1
             asm("fld %1;" "fld %3;" "fmul;" "fld %2;" "fadd;" "fstp %0;": "=m" (tempS): "m" (four), "m" (one), "m" (k));
 
-            // sum(x ^ (4 * k + 1) / (4 * k + 1), k = 1..n)
-            asm("fld %1;" "fld %2;" "fdiv;" "fld %0;" "fadd;" "fstp %0;" : "+m" (S): "m" (xk), "m" (tempS));
-
+            S += xk / tempS;
             k += 1.0f;
 
             auto end_cycle=std::chrono::high_resolution_clock::now();
             std::chrono::duration<double> elapsed_iterations = end_cycle - start_cycle;
             //std::cout << "Time for iteration: " << elapsed_iterations.count() << " seconds" << "\n";
-
             iteration_time += elapsed_iterations.count();
 
-            if (k > 4.0f)
+            if (std::abs(xk / tempS) < eps)
                 break;
         }
 
         int n = k;
 
-        std::cout << std::setprecision(3) << std::scientific << std::showpos << " | "
+        std::cout << std::scientific << std::showpos << " | "
         << x << " | " << S << " | " << Y << " | " << std::abs(Y - S) << " | " << std::noshowpos
         << std::right << std::setw(2) << n << " | " << "\n";
 
-        auto end_program = std::chrono::high_resolution_clock::now();
-        std::chrono::duration<double, std::milli> elapsed_program = end_program - start_program;
-
-        accumulated_time += elapsed_program.count();
-        my_file << iteration_time << "," << n << "\n";
+        my_file << n << "," << iteration_time << "\n";
     }
-
     my_file.close();
-    return;
 }

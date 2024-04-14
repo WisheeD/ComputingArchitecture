@@ -4,16 +4,15 @@ import pandas as pd
 data = pd.read_csv(
     '../Task/cmake-build-debug/values.csv',
     header=None,
-    names=['Time', 'N']
+    names=['N', 'Time']
 )
 
 plt.figure(figsize=(10, 6))
 
-plt.plot(data['Time'], data['N'], label='function', marker='o', linestyle='-')
+plt.plot(data['Time'], data['N'], marker='o')
 
-plt.title('Comparison of Time and N')
+plt.title('Comparison of Time and Iterations')
 plt.xlabel('Time')
-plt.ylabel('N')
-plt.legend()
+plt.ylabel('Iterations')
 plt.grid(True)
 plt.show()
