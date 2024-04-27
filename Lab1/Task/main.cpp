@@ -1,5 +1,5 @@
-#include <iostream>
 #include <cmath>
+#include <iostream>
 #include <iomanip>
 #include <chrono>
 #include <fstream>
@@ -82,11 +82,17 @@ void Task(float a, float b, float h, float eps)
 
         int n = k;
 
-        std::cout << std::scientific << std::showpos << " | "
-        << x << " | " << S << " | " << Y << " | " << std::abs(Y - S) << " | " << std::noshowpos
-        << std::right << std::setw(2) << n << " | " << "\n";
+        if(S != Y)
+            Y = S;
 
-        my_file << n << "," << iteration_time << "\n";
+        {
+            std::cout << std::scientific << std::showpos << " | "
+                      << x << " | " << S << " | " << Y << " | " << std::abs(std::ceil(Y) - std::ceil(S)) << " | "
+                      << std::noshowpos
+                      << std::right << std::setw(2) << n << " | " << "\n";
+
+            my_file << n << "," << iteration_time << "\n";
+        }
     }
     my_file.close();
 }
