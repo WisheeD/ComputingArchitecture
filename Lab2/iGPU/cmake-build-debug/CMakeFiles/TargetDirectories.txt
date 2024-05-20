@@ -1,0 +1,3 @@
+/home/wisheed/ComputingArchitecture/Lab2/iGPU/cmake-build-debug/CMakeFiles/iGPU.dir
+/home/wisheed/ComputingArchitecture/Lab2/iGPU/cmake-build-debug/CMakeFiles/edit_cache.dir
+/home/wisheed/ComputingArchitecture/Lab2/iGPU/cmake-build-debug/CMakeFiles/rebuild_cache.dir
