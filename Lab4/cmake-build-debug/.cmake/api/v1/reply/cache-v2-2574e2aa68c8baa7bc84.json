@@ -55,7 +55,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "c:/Users/WisheeD/CLionProject/Lab8.1/cmake-build-debug"
+			"value" : "c:/Users/WisheeD/ComputingArchitecture/Lab4/cmake-build-debug"
 		},
 		{
 			"name" : "CMAKE_CACHE_MAJOR_VERSION",
@@ -575,7 +575,7 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "C:/Users/WisheeD/CLionProject/Lab8.1/cmake-build-debug/CMakeFiles/pkgRedirects"
+			"value" : "C:/Users/WisheeD/ComputingArchitecture/Lab4/cmake-build-debug/CMakeFiles/pkgRedirects"
 		},
 		{
 			"name" : "CMAKE_GENERATOR",
@@ -647,7 +647,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "C:/Users/WisheeD/CLionProject/Lab8.1"
+			"value" : "C:/Users/WisheeD/ComputingArchitecture/Lab4"
 		},
 		{
 			"name" : "CMAKE_INSTALL_PREFIX",
@@ -659,7 +659,7 @@
 				}
 			],
 			"type" : "PATH",
-			"value" : "C:/Program Files (x86)/Lab8_1"
+			"value" : "C:/Program Files (x86)/Lab4"
 		},
 		{
 			"name" : "CMAKE_LINKER",
@@ -875,7 +875,7 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "Lab8_1"
+			"value" : "Lab4"
 		},
 		{
 			"name" : "CMAKE_RANLIB",
@@ -1270,7 +1270,7 @@
 			"value" : "FALSE"
 		},
 		{
-			"name" : "Lab8_1_BINARY_DIR",
+			"name" : "Lab4_BINARY_DIR",
 			"properties" : 
 			[
 				{
@@ -1279,10 +1279,10 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "C:/Users/WisheeD/CLionProject/Lab8.1/cmake-build-debug"
+			"value" : "C:/Users/WisheeD/ComputingArchitecture/Lab4/cmake-build-debug"
 		},
 		{
-			"name" : "Lab8_1_IS_TOP_LEVEL",
+			"name" : "Lab4_IS_TOP_LEVEL",
 			"properties" : 
 			[
 				{
@@ -1294,7 +1294,7 @@
 			"value" : "ON"
 		},
 		{
-			"name" : "Lab8_1_SOURCE_DIR",
+			"name" : "Lab4_SOURCE_DIR",
 			"properties" : 
 			[
 				{
@@ -1303,7 +1303,7 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "C:/Users/WisheeD/CLionProject/Lab8.1"
+			"value" : "C:/Users/WisheeD/ComputingArchitecture/Lab4"
 		},
 		{
 			"name" : "_CMAKE_LINKER_PUSHPOP_STATE_SUPPORTED",

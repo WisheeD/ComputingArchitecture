@@ -1,8 +1,8 @@
-# Install script for directory: C:/Users/WisheeD/ComputingArchitecture/Lab3
+# Install script for directory: C:/Users/WisheeD/ComputingArchitecture/Lab4
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
-  set(CMAKE_INSTALL_PREFIX "C:/Program Files (x86)/Lab8_1")
+  set(CMAKE_INSTALL_PREFIX "C:/Program Files (x86)/Lab4")
 endif()
 string(REGEX REPLACE "/$" "" CMAKE_INSTALL_PREFIX "${CMAKE_INSTALL_PREFIX}")
 
@@ -45,5 +45,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "C:/Users/WisheeD/ComputingArchitecture/Lab3/cmake-build-debug/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "C:/Users/WisheeD/ComputingArchitecture/Lab4/cmake-build-debug/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")
